@@ -1,11 +1,8 @@
-const Logger = require("nodemon/lib/utils/log");
-const {app} = require("./src/app"); 
+const app = require("./src/app");
 
-const port = 6000; 
+const port = 3000; 
 
-
-
-app.listen(port, function () {
-    console.log("Сервер работает корректно");
+app.listen(port, (req,res) => {
+console.log(`сервер рабоотает на порте ${port}`);
 })
 

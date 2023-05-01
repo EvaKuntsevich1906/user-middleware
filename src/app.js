@@ -1,14 +1,19 @@
-const express = require("express"); 
-const {route} = require("./controller/user.controller")
+const express = require("express");
 const bodyParser = require("body-parser");
-
-
-const app = express(); 
+const user = require("./controller/user.controller")
+const app = express();
 
 app.use(bodyParser.json());
 
+app.use("/user", user);
 
-app.use("/user", route) 
-module.exports = {
-    app
-}
+app.get("/", (req, res) => {
+    res.send("ок")
+});
+
+app.use((err, req, res, next) => {
+    res.send(err.message);
+})
+
+
+module.exports = app;
