@@ -4,7 +4,8 @@ const {
     getAllUsers,
     getUsersByID,
     createUsers,
-    updateUsersByID
+    updateUsersByID,
+    deleteUsersByID
 } = require("../service/user.service");
 
 route.get("/", (req, res) => {
@@ -38,5 +39,12 @@ route.put("/:id", (req, res) => {
 });
 
 
+route.delete("/:id", (req, res) => {
+    const {
+        id
+    } = req.params;
+    const data = deleteUsersByID(id);
+    res.send(data)
+})
 
 module.exports = route;

@@ -39,9 +39,17 @@ const updateUsersByID = (id, name, surname, email, pwd) => {
 
 }
 
+const deleteUsersByID = (id) => {
+    const arr = JSON.parse(fs.readFileSync(path));
+    const filterByID = arr.filter(el => el.id != id);
+    return filterByID
+
+}
+
 module.exports = {
     getAllUsers,
     getUsersByID,
     createUsers, 
-    updateUsersByID
+    updateUsersByID,
+    deleteUsersByID
 }
